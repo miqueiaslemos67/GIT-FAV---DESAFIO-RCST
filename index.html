@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Otimiza o carregamento das fontes do Google, pré-conectando aos servidores -->
+
+    <script type="module" src="js/main.js" defer></script>
+
+    <title>Git-Fav</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app-gitFav">
+      <header>
+        <h1><img src="img/Gitfav.png" alt="Image this Vector Git-Fav / imagem em branco do nome GITFAV no canto superior esquerdo." /></h1>
+
+        <div class="search">
+            <!-- Seção de busca do usuário do Github -->
+            <label class="sr-only" for="input-search">Usuário do Github</label>
+            <!-- Rótulo para acessibilidade, invisível visualmente -->
+  
+            <input id="input-search" type="text" placeholder="Digite o Github username que quer favoritar" />
+            <!-- Campo de entrada para inserir o nome do usuário do Github -->
+  
+            <button><img src="img/Vector.png" alt="Vetor/imagem da estrela do botão favorito"> FAVORITAR </button>
+            <!-- Botão de adicionar o usuário (ícone de "estrela") -->
+          </div>
+    </header>
+
+    <table>
+      <!-- Tabela que exibirá os dados dos usuários favoritos -->
+
+      <thead>
+        <tr>
+          <th>Usuário</th>
+          <th>Repositories</th>
+          <th>Followers</th>
+          <th>Acão</th>
+        </tr>
+      </thead>
+      <!-- Cabeçalho da tabela com colunas para usuário, repositórios e seguidores -->
+
+      <tbody></tbody>
+      <!-- Corpo da tabela onde os dados dos usuários serão inseridos dinamicamente via JavaScript -->
+    </table>
+    </div>
+    
+  </body>
+</html>

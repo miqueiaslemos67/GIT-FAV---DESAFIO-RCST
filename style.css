@@ -1,0 +1,182 @@
+@charset "UTF-08";
+/* Reset de estilos básicos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --font-primary: "Poppins", sans-serif;
+  --text-color: #ffffff;
+
+  --hue: 194;
+  --primary-color: #092D38;
+}
+body {
+  background-color: #0d0d0d; /* Fundo escuro */
+  color: var(--text-color); /* Texto branco */
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+  height: 100vh; /* Ocupa toda a tela */
+}
+
+#app-gitFav {
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#app-gitFav img {
+  margin-right: 10px; /* Ajuste conforme necessário */
+}
+
+/* Estilizando o cabeçalho */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.8rem;
+
+  margin: 2.5rem 0;
+}
+
+h1 img {
+  display: flex; 
+  width: 186.28px;
+  height: 32.75px;
+  justify-content: flex-end;
+  align-items: flex-end;
+ 
+
+}
+/* Config. para sumir com o ( Usuário do Github), mas ficar visivel para acessibilidade. */
+.sr-only {
+  background-color: #303030;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+/* Estilizando a barra de pesquisa */
+.search {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.search input {
+  width: 300px;
+  height: 36px;
+  padding: 0.6rem;
+  border: 1px solid #333;
+  border-radius: 0.2rem;
+  background-color: #06181c;
+  color: white;
+  outline: none;
+}
+
+.search input::placeholder {
+  color: #7c7c8a;
+}
+
+/* Botão Favoritar */
+.search button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 10px 15px;
+  border: none;
+  background-color: #065E7C;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.search button img {
+  width: 16px;
+  height: 16px;
+}
+
+table {
+  width: 113.4%;
+  border-collapse: collapse;
+}
+
+table * {
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+table th {
+  background: var(--primary-color);
+  text-align: left;
+  font-weight: normal;
+  padding: 1.5rem;
+}
+
+table th:first-child {
+  border-top-left-radius: 0.4rem;
+}
+
+table th:last-child {
+  border-top-right-radius: 0.4rem;
+}
+
+/* background dos usuários */
+
+/* Even (pares/colunas) */
+table tr:nth-child(even) {
+  background: #0a252b;
+}
+/* background dos usuários  */
+/* Odd (impares/colunas) */
+table tr:nth-child(odd) {
+  background: #06161B;
+}
+
+table td {
+  padding: 1.5rem;
+  text-align: left;
+}
+
+td.user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+td.user img {
+  width: 5rem;
+  height: 5rem;
+
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+td.user a {
+  text-decoration: none;
+}
+
+td.user a p {
+  font-weight: bold;
+}
+
+td .remove {
+  background: none;
+  border: none;
+
+  color: red;
+  cursor: pointer;
+}
