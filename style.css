@@ -1,5 +1,6 @@
-@charset "UTF-08";
-/* Reset de estilos básicos */
+@charset "UTF-8";
+
+/* Basic CSS reset | Reset de estilos básicos */
 * {
   margin: 0;
   padding: 0;
@@ -7,8 +8,9 @@
   font-family: Arial, sans-serif;
 }
 
+/* Root variables and base font size | Variáveis globais e tamanho-base da fonte */
 :root {
-  font-size: 62.5%;
+  font-size: 62.5%; /* 1rem = 10px */
 
   --font-primary: "Poppins", sans-serif;
   --text-color: #ffffff;
@@ -16,15 +18,18 @@
   --hue: 194;
   --primary-color: #092D38;
 }
+
+/* Body styling | Estilização do corpo da página */
 body {
-  background-color: #0d0d0d; /* Fundo escuro */
-  color: var(--text-color); /* Texto branco */
+  background-color: #0d0d0d; /* Dark background | Fundo escuro */
+  color: var(--text-color); /* White text | Texto branco */
   display: flex;
   justify-content: center;
   padding-top: 60px;
-  height: 100vh; /* Ocupa toda a tela */
+  height: 100vh; /* Full viewport height | Ocupa toda a tela */
 }
 
+/* Main container | Container principal */
 #app-gitFav {
   padding: 2rem;
   max-width: 600px;
@@ -32,29 +37,28 @@ body {
 }
 
 #app-gitFav img {
-  margin-right: 10px; /* Ajuste conforme necessário */
+  margin-right: 10px; /* Adjust as needed | Ajuste conforme necessário */
 }
 
-/* Estilizando o cabeçalho */
+/* Header styling | Estilizando o cabeçalho */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 0.8rem;
-
   margin: 2.5rem 0;
 }
 
+/* Logo image dimensions | Dimensões da imagem logo */
 h1 img {
   display: flex; 
   width: 186.28px;
   height: 32.75px;
   justify-content: flex-end;
   align-items: flex-end;
- 
-
 }
-/* Config. para sumir com o ( Usuário do Github), mas ficar visivel para acessibilidade. */
+
+/* Accessible class (hidden visually, visible to screen readers) | Classe para acessibilidade (visualmente oculta, acessível para leitores de tela) */
 .sr-only {
   background-color: #303030;
   position: absolute;
@@ -67,13 +71,14 @@ h1 img {
   white-space: nowrap;
 }
 
-/* Estilizando a barra de pesquisa */
+/* Search bar styling | Estilizando a barra de pesquisa */
 .search {
   display: flex;
   gap: 0.3rem;
   align-items: center;
 }
 
+/* Search input field | Campo de entrada da pesquisa */
 .search input {
   width: 300px;
   height: 36px;
@@ -89,7 +94,7 @@ h1 img {
   color: #7c7c8a;
 }
 
-/* Botão Favoritar */
+/* Favorite button styling | Estilização do botão "Favoritar" */
 .search button {
   display: flex;
   align-items: center;
@@ -109,16 +114,19 @@ h1 img {
   height: 16px;
 }
 
+/* Table styling | Estilização da tabela */
 table {
-  width: 113.4%;
+  width: 113.4%; /* Slightly wider than container | Ligeiramente maior que o container */
   border-collapse: collapse;
 }
 
+/* General table text style | Estilo geral do texto da tabela */
 table * {
   font-size: 1.5rem;
   color: var(--text-color);
 }
 
+/* Table header styling | Estilização do cabeçalho da tabela */
 table th {
   background: var(--primary-color);
   text-align: left;
@@ -126,6 +134,7 @@ table th {
   padding: 1.5rem;
 }
 
+/* Rounded corners for first and last table headers | Cantos arredondados para o primeiro e último cabeçalho da tabela */
 table th:first-child {
   border-top-left-radius: 0.4rem;
 }
@@ -134,37 +143,38 @@ table th:last-child {
   border-top-right-radius: 0.4rem;
 }
 
-/* background dos usuários */
-
-/* Even (pares/colunas) */
+/* Alternating row backgrounds (even rows) | Alternância de cores das linhas (linhas pares) */
 table tr:nth-child(even) {
   background: #0a252b;
 }
-/* background dos usuários  */
-/* Odd (impares/colunas) */
+
+/* Alternating row backgrounds (odd rows) | Alternância de cores das linhas (linhas ímpares) */
 table tr:nth-child(odd) {
   background: #06161B;
 }
 
+/* Table data cell styling | Estilização das células da tabela */
 table td {
   padding: 1.5rem;
   text-align: left;
 }
 
+/* User information cells styling | Estilização das células com informações dos usuários */
 td.user {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
+/* User profile image styling | Estilização da imagem do perfil do usuário */
 td.user img {
   width: 5rem;
   height: 5rem;
-
   object-fit: cover;
   border-radius: 50%;
 }
 
+/* User links (name and username) | Links dos usuários (nome e username) */
 td.user a {
   text-decoration: none;
 }
@@ -173,10 +183,11 @@ td.user a p {
   font-weight: bold;
 }
 
+/* Remove button styling | Estilização do botão remover */
 td .remove {
   background: none;
   border: none;
-
   color: red;
   cursor: pointer;
 }
+

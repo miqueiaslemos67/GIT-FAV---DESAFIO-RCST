@@ -6,48 +6,62 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Otimiza o carregamento das fontes do Google, pré-conectando aos servidores -->
+    <!-- Optimizes loading of Google fonts by preconnecting to servers | Otimiza o carregamento das fontes do Google pré-conectando aos servidores -->
 
     <script type="module" src="js/main.js" defer></script>
 
     <title>Git-Fav</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="app-gitFav">
       <header>
-        <h1><img src="img/Gitfav.png" alt="Image this Vector Git-Fav / imagem em branco do nome GITFAV no canto superior esquerdo." /></h1>
+        <h1>
+          <img
+            src="img/Gitfav.png"
+            alt="Blank image of the name GITFAV at the upper left corner | imagem em branco do nome GITFAV no canto superior esquerdo"
+          />
+        </h1>
 
         <div class="search">
-            <!-- Seção de busca do usuário do Github -->
-            <label class="sr-only" for="input-search">Usuário do Github</label>
-            <!-- Rótulo para acessibilidade, invisível visualmente -->
-  
-            <input id="input-search" type="text" placeholder="Digite o Github username que quer favoritar" />
-            <!-- Campo de entrada para inserir o nome do usuário do Github -->
-  
-            <button><img src="img/Vector.png" alt="Vetor/imagem da estrela do botão favorito"> FAVORITAR </button>
-            <!-- Botão de adicionar o usuário (ícone de "estrela") -->
-          </div>
-    </header>
+          <!-- Github user search section | Seção de busca do usuário do Github -->
+          <label class="sr-only" for="input-search">Github User</label>
+          <!-- Accessibility label, visually hidden | Rótulo para acessibilidade, invisível visualmente -->
 
-    <table>
-      <!-- Tabela que exibirá os dados dos usuários favoritos -->
+          <input
+            id="input-search"
+            type="text"
+            placeholder="Enter the Github username you want to favorite"
+          />
+          <!-- Input field to insert the Github username | Campo de entrada para inserir o nome do usuário do Github -->
 
-      <thead>
-        <tr>
-          <th>Usuário</th>
-          <th>Repositories</th>
-          <th>Followers</th>
-          <th>Acão</th>
-        </tr>
-      </thead>
-      <!-- Cabeçalho da tabela com colunas para usuário, repositórios e seguidores -->
+          <button>
+            <img
+              src="img/Vector.png"
+              alt="Star icon image of the favorite button | Ícone de estrela do botão favorito"
+            />
+            FAVORITE
+          </button>
+          <!-- Button to add user ("star" icon) | Botão para adicionar usuário (ícone de "estrela") -->
+        </div>
+      </header>
 
-      <tbody></tbody>
-      <!-- Corpo da tabela onde os dados dos usuários serão inseridos dinamicamente via JavaScript -->
-    </table>
+      <table>
+        <!-- Table to display data of favorite users | Tabela que exibirá os dados dos usuários favoritos -->
+
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Repositories</th>
+            <th>Followers</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <!-- Table header with columns for user, repositories, followers and action | Cabeçalho da tabela com colunas para usuário, repositórios, seguidores e ação -->
+
+        <tbody></tbody>
+        <!-- Table body where user data will be dynamically inserted via JavaScript | Corpo da tabela onde os dados dos usuários serão inseridos dinamicamente via JavaScript -->
+      </table>
     </div>
-    
   </body>
 </html>

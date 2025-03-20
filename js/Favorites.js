@@ -1,109 +1,110 @@
 import { GithubUser } from "./GithubUser.js";
 
-// Classe que gerencia os dados dos usuários favoritos
+// Class that manages favorite user data | Classe que gerencia os dados dos usuários favoritos
 export class Favorites {
   constructor(root) {
     this.root = document.querySelector(root);
-    this.load(); // Carrega os dados do localStorage
+    this.load(); // Loads data from localStorage | Carrega os dados do localStorage
   }
 
   load() {
+    // Retrieves data stored in localStorage or initializes an empty array if none exists
     // Recupera os dados armazenados no localStorage ou inicia um array vazio caso não existam dados
     this.entries = JSON.parse(localStorage.getItem("@github-favorites:")) || [];
   }
 
   save() {
-    // Salva a lista de favoritos no localStorage
+    // Saves the favorites list to localStorage | Salva a lista de favoritos no localStorage
     localStorage.setItem("@github-favorites:", JSON.stringify(this.entries));
   }
 
   async add(username) {
-    // Adiciona um usuário à lista de favoritos
+    // Adds a user to the favorites list | Adiciona um usuário à lista de favoritos
     try {
       const userExists = this.entries.find((entry) => entry.login === username);
 
       if (userExists) {
-        throw new Error("Usuário já cadastrado!"); // Impede duplicatas
+        throw new Error("User already registered!"); // Prevents duplicates | Impede duplicatas
       }
 
       const user = await GithubUser.search(username);
       if (user.login === undefined) {
-        throw new Error("Usuário não encontrado!"); // Se o usuário não existir no GitHub
+        throw new Error("User not found!"); // If the user doesn't exist on GitHub | Se o usuário não existir no GitHub
       }
 
-      this.entries = [user, ...this.entries]; // Adiciona o novo usuário no topo da lista
-      this.update(); // Atualiza a exibição da tabela
-      this.save(); // Salva no localStorage
+      this.entries = [user, ...this.entries]; // Adds the new user to the top of the list | Adiciona o novo usuário no topo da lista
+      this.update(); // Updates the table view | Atualiza a exibição da tabela
+      this.save(); // Saves to localStorage | Salva no localStorage
     } catch (error) {
-      alert(error.message); // Exibe o erro ao usuário
+      alert(error.message); // Displays the error message to the user | Exibe o erro ao usuário
     }
   }
 
   delete(user) {
-    // Remove um usuário da lista de favoritos
+    // Removes a user from the favorites list | Remove um usuário da lista de favoritos
     const filteredEntries = this.entries.filter(
       (entry) => entry.login !== user.login
     );
 
-    this.entries = filteredEntries; // Atualiza a lista sem o usuário removido
-    this.update(); // Atualiza a exibição
-    this.save(); // Atualiza o localStorage
+    this.entries = filteredEntries; // Updates the list without the removed user | Atualiza a lista sem o usuário removido
+    this.update(); // Updates the view | Atualiza a exibição
+    this.save(); // Updates localStorage | Atualiza o localStorage
   }
 }
 
-// Classe que gerencia a interface gráfica e os eventos do HTML
+// Class that manages the graphical interface and HTML events | Classe que gerencia a interface gráfica e os eventos do HTML
 export class FavoritesView extends Favorites {
   constructor(root) {
-    super(root); // Liga a classe Favorites a esta classe
+    super(root); // Links Favorites class to this class | Liga a classe Favorites a esta classe
 
-    this.tbody = this.root.querySelector("table tbody"); // Seleciona o corpo da tabela
+    this.tbody = this.root.querySelector("table tbody"); // Selects the table body | Seleciona o corpo da tabela
 
-    this.update(); // Atualiza a interface
-    this.onadd(); // Configura o evento de adicionar usuário
+    this.update(); // Updates the interface | Atualiza a interface
+    this.onadd(); // Sets up the event for adding a user | Configura o evento de adicionar usuário
   }
 
   onadd() {
-    // Evento para capturar o clique no botão de adicionar usuário
+    // Event listener to handle the click on the add-user button | Evento para capturar o clique no botão de adicionar usuário
     const addButton = this.root.querySelector(".search button");
     addButton.onclick = () => {
       const { value } = this.root.querySelector(".search input");
-      this.add(value); // Adiciona o usuário ao clicar no botão
+      this.add(value); // Adds the user when the button is clicked | Adiciona o usuário ao clicar no botão
     };
   }
 
   update() {
-    // Atualiza a exibição da tabela
-    this.removeAllTr(); // Remove todas as linhas antes de adicionar novas
+    // Updates the table display | Atualiza a exibição da tabela
+    this.removeAllTr(); // Removes all rows before adding new ones | Remove todas as linhas antes de adicionar novas
 
     this.entries.forEach((user) => {
-      const row = this.createRow(user); // Cria uma nova linha para cada usuário
+      const row = this.createRow(user); // Creates a new row for each user | Cria uma nova linha para cada usuário
 
-      // Preenche os dados do usuário na linha da tabela
+      // Populates user data in the table row | Preenche os dados do usuário na linha da tabela
       row.querySelector(".user img").src = `https://github.com/${user.login}.png`;
-      row.querySelector(".user img").alt = `Imagem de ${user.name}`;
+      row.querySelector(".user img").alt = `Image of ${user.name}`;
       row.querySelector(".user p").textContent = user.name;
       row.querySelector(".user a").href = `https://github.com/${user.login}`;
       row.querySelector(".user span").textContent = user.login;
       row.querySelector(".repositories").textContent = user.public_repos;
       row.querySelector(".followers").textContent = user.followers;
 
-      // Configura o evento de remoção ao clicar no botão "×"
+      // Sets up removal event when the "×" button is clicked | Configura o evento de remoção ao clicar no botão "×"
       row.querySelector(".remove").onclick = () => {
-        const isOk = confirm("Tem certeza que deseja deletar essa linha?");
+        const isOk = confirm("Are you sure you want to delete this row?");
         if (isOk) this.delete(user);
       };
 
-      this.tbody.append(row); // Adiciona a linha à tabela
+      this.tbody.append(row); // Adds the row to the table | Adiciona a linha à tabela
     });
   }
 
   createRow() {
-    // Cria um novo elemento de linha (tr) para a tabela
+    // Creates a new row element (tr) for the table | Cria um novo elemento de linha (tr) para a tabela
     const tr = document.createElement("tr");
 
     tr.innerHTML = `
       <td class="user">
-        <img src="https://github.com/miqueiaslemos67.png" alt="Imagem do Github miqueiaslemos67" />
+        <img src="https://github.com/miqueiaslemos67.png" alt="Image of Github miqueiaslemos67" />
         <a href="https://github.com/miqueiaslemos67" target="_blank">
           <p>Miquéias Lemos</p>
           <span>miqueiaslemos67</span>
@@ -116,11 +117,11 @@ export class FavoritesView extends Favorites {
       </td> 
     `;
 
-    return tr; // Retorna a linha criada para ser inserida na tabela
+    return tr; // Returns the created row to be inserted into the table | Retorna a linha criada para ser inserida na tabela
   }
 
   removeAllTr() {
-    // Remove todas as linhas da tabela antes de atualizar
+    // Removes all rows from the table before updating | Remove todas as linhas da tabela antes de atualizar
     this.tbody.querySelectorAll("tr").forEach((tr) => tr.remove());
   }
 }
